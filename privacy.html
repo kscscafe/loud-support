@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — LOUD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #FF5252;
+    --red-light: #FF8A80;
+    --bg: #0A0A0A;
+    --bg2: #141414;
+    --text: #F5F5F5;
+    --text-muted: #888888;
+    --border: rgba(255,82,82,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Anton', 'Noto Sans JP', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.25em;
+    color: var(--red);
+    text-decoration: none;
+    text-shadow: 0 0 12px rgba(255,82,82,0.35);
+  }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-back {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--red-light); }
+  .lang-toggle { display: flex; border: 1px solid var(--border); overflow: hidden; }
+  .lang-toggle button {
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 0.3rem 0.75rem; font-family: inherit; font-size: 0.8rem;
+    letter-spacing: 0.1em; cursor: pointer; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .lang-toggle button.active { background: var(--red); color: #0A0A0A; }
+  .lang-toggle button:hover:not(.active) { color: var(--red-light); }
+
+  [data-lang] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-ja [data-lang="ja"] { display: block; }
+  span[data-lang] { display: none; }
+  body.lang-en span[data-lang="en"] { display: inline; }
+  body.lang-ja span[data-lang="ja"] { display: inline; }
+
+  .page-header {
+    padding: 10rem 2rem 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  .page-header h1 {
+    font-family: 'Anton', 'Noto Sans JP', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .page-header .updated {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  .policy-section { margin-bottom: 3.5rem; }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--red-light);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+  p { color: var(--text-muted); margin-bottom: 1rem; }
+  p strong { color: var(--text); font-weight: 700; }
+  ul { list-style: none; margin: 0.5rem 0 1rem 0; }
+  ul li {
+    color: var(--text-muted);
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  ul li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+  a { color: var(--red); text-decoration: none; }
+  a:hover { color: var(--red-light); }
+  .contact-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+  .contact-box p { margin: 0; }
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+  footer a { color: var(--red); }
+  footer a:hover { color: var(--red-light); }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.8rem; }
+    .page-header { padding: 8rem 1.5rem 3rem; }
+    .page-header h1 { font-size: 2.2rem; }
+    main { padding: 3rem 1.5rem 4rem; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a class="nav-brand" href="index.html">LOUD</a>
+  <div class="nav-right">
+    <a class="nav-back" href="index.html" id="nav-back">← Back to Support</a>
+    <div class="lang-toggle">
+      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnJa" onclick="setLang('ja')">日本語</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="section-label">Legal</div>
+  <h1><span data-lang="en">Privacy Policy</span><span data-lang="ja">プライバシーポリシー</span></h1>
+  <p class="updated">
+    <span data-lang="en">Last updated: April 30, 2026</span>
+    <span data-lang="ja">最終更新日：2026年4月30日</span>
+  </p>
+</div>
+
+<main>
+
+  <!-- 1. Overview -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>1. Overview</h2>
+      <p>This Privacy Policy describes how OFFICEES LLC ("we," "us," or "our") handles information in connection with the <strong>LOUD</strong> mobile application for iOS and Android ("the App").</p>
+      <p>LOUD measures the loudness of your voice and submits your peak decibel score, your chosen nickname, and your country code to a global ranking. This page explains exactly what is collected, what is not, and which third-party services are involved.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>1. 概要</h2>
+      <p>本プライバシーポリシーは、OFFICEES LLC（以下「当社」）が iOS / Android 向けアプリケーション <strong>LOUD</strong>（以下「本アプリ」）に関連して情報をどのように取り扱うかを説明するものです。</p>
+      <p>本アプリは、あなたの叫び声の音量（ピークdB）、あなたが入力したニックネーム、および国コードを世界ランキングに登録します。本ページでは、何を収集し、何を収集しないか、どのような第三者サービスを利用するかを明記します。</p>
+    </div>
+  </div>
+
+  <!-- 2. Microphone -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>2. Microphone Use</h2>
+      <p>The App uses your device's microphone <strong>solely to measure sound level (decibels) in real time</strong>. The audio waveform itself is <strong>never recorded, stored, or transmitted</strong>. Only a numeric peak value is retained from each measurement session.</p>
+      <p>Microphone access is requested explicitly the first time you tap the SCREAM button. You can revoke this permission at any time from your device settings.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>2. マイクの使用</h2>
+      <p>本アプリは、<strong>音量（dB）をリアルタイムに計測する目的のみ</strong>でデバイスのマイクを使用します。音声そのもの（録音データ）は<strong>一切記録・保存・送信されません</strong>。計測のたびに保持されるのは、ピーク音量の数値のみです。</p>
+      <p>マイクの権限は、初回SCREAMボタンタップ時に明示的に要求されます。デバイスの設定から、いつでも権限を取り消すことができます。</p>
+    </div>
+  </div>
+
+  <!-- 3. Data Submitted to Our Server -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>3. Data Submitted to Our Server</h2>
+      <p>When you complete a measurement, the following information is sent to our backend (powered by <strong>Supabase</strong>) and made publicly visible on the leaderboard:</p>
+      <ul>
+        <li>Your 6-character nickname (A-Z / 0-9, chosen by you on the home screen)</li>
+        <li>Peak decibel value of the 3-second measurement</li>
+        <li>ISO 3166-1 alpha-2 country code and country name (see Section 4)</li>
+        <li>UTC timestamp of submission</li>
+      </ul>
+      <p>We do <strong>not</strong> attach any account, email, phone number, or device identifier to this submission. The leaderboard entry is anonymous beyond the nickname you choose.</p>
+      <p>Supabase is operated by Supabase, Inc. and acts as a data sub-processor for storage and retrieval. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a>.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>3. サーバーに送信される情報</h2>
+      <p>計測が完了したとき、以下の情報が当社のバックエンド（<strong>Supabase</strong>）に送信され、ランキング上に公開されます。</p>
+      <ul>
+        <li>ホーム画面で入力した6文字ニックネーム（A-Z / 0-9）</li>
+        <li>3秒間計測のピーク音量（dB値）</li>
+        <li>ISO 3166-1 alpha-2 国コードおよび国名（第4項参照）</li>
+        <li>送信時刻（UTC）</li>
+      </ul>
+      <p>アカウント情報・メールアドレス・電話番号・デバイス識別子は<strong>一切付与されません</strong>。ランキング登録は、ご自身で入力したニックネーム以外は匿名です。</p>
+      <p>Supabaseは Supabase, Inc. が運営するサービスで、保存・取得のサブプロセッサとして機能します。詳細は <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabaseのプライバシーポリシー</a>をご参照ください。</p>
+    </div>
+  </div>
+
+  <!-- 4. Country Detection (IP) -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>4. Country Detection from IP Address</h2>
+      <p>To determine which country flag appears next to your score, the App sends a request to a third-party IP geolocation service (<a href="https://ip-api.com/" target="_blank" rel="noopener">ip-api.com</a>). Only the resulting <strong>country code and country name</strong> are stored — your IP address itself is not retained by us.</p>
+      <p>The App does <strong>not</strong> use GPS or any other location services. No precise location is collected.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>4. IPアドレスによる国判定</h2>
+      <p>スコア横に表示する国旗を決定するため、本アプリは第三者IP判定サービス（<a href="https://ip-api.com/" target="_blank" rel="noopener">ip-api.com</a>）にリクエストを送信します。当社サーバーに保存されるのは判定結果の<strong>国コードと国名のみ</strong>で、IPアドレス自体は保持しません。</p>
+      <p>本アプリは GPS その他の位置情報サービスを<strong>一切使用しません</strong>。詳細な位置は収集しません。</p>
+    </div>
+  </div>
+
+  <!-- 5. Analytics -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>5. Analytics (Firebase Analytics)</h2>
+      <p>The App uses <strong>Google Firebase Analytics</strong> to understand aggregate usage patterns and improve the experience. The following events are collected:</p>
+      <ul>
+        <li><code>scream_completed</code> — when a measurement is submitted (parameters: nickname, decibel, country code, world rank, country rank)</li>
+        <li><code>ranking_viewed</code> — when the ranking screen is opened</li>
+        <li><code>try_again</code> — when the user taps "TRY AGAIN" on the result screen</li>
+        <li><code>screen_view</code> — automatic Firebase event for screen navigation</li>
+      </ul>
+      <p>Firebase may also automatically collect device information such as device model, OS version, language, and a randomly generated app instance ID. We do not link this data to any personal identity. Firebase data handling is governed by <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google's Privacy &amp; Terms</a>.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>5. アナリティクス（Firebase Analytics）</h2>
+      <p>本アプリは利用状況の集計と改善のため、<strong>Google Firebase Analytics</strong> を使用します。収集するイベントは以下のとおりです。</p>
+      <ul>
+        <li><code>scream_completed</code> — 計測完了時（パラメータ：ニックネーム、dB値、国コード、世界順位、国別順位）</li>
+        <li><code>ranking_viewed</code> — ランキング画面を開いたとき</li>
+        <li><code>try_again</code> — 結果画面で「TRY AGAIN」をタップしたとき</li>
+        <li><code>screen_view</code> — Firebase 標準の画面遷移イベント（自動）</li>
+      </ul>
+      <p>Firebaseは加えて、端末モデル・OSバージョン・言語・ランダム生成のアプリインスタンスIDなどを自動収集する場合があります。これらは個人を特定する情報には紐づけません。Firebaseの取り扱いについては <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Googleプライバシーと規約</a>をご参照ください。</p>
+    </div>
+  </div>
+
+  <!-- 6. Advertising (AdMob) -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>6. Advertising (Google AdMob)</h2>
+      <p>The App displays banner advertisements served by <strong>Google AdMob</strong> on the result and ranking screens. AdMob may collect identifiers such as the Advertising Identifier (IDFA on iOS / Advertising ID on Android), coarse device information, and ad interaction data to deliver and measure advertisements.</p>
+      <p>On iOS, the App requests permission via the App Tracking Transparency (ATT) framework before any cross-app tracking identifier can be used. You may decline tracking, in which case ads continue to be shown but in a non-personalized form.</p>
+      <p>For details, see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Ads &amp; Privacy</a>.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>6. 広告（Google AdMob）</h2>
+      <p>本アプリは、結果画面とランキング画面で <strong>Google AdMob</strong> によるバナー広告を表示します。AdMobは広告の配信・効果測定のため、広告識別子（iOSはIDFA、AndroidはAdvertising ID）、概略のデバイス情報、広告インタラクション情報などを収集する場合があります。</p>
+      <p>iOSでは App Tracking Transparency (ATT) フレームワークによりトラッキングの許可を明示的に求めます。許可しない場合でも広告は表示されますが、パーソナライズされない形式となります。</p>
+      <p>詳細は <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google広告とプライバシー</a>をご参照ください。</p>
+    </div>
+  </div>
+
+  <!-- 7. What We Don't Collect -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>7. What the App Does Not Collect</h2>
+      <p>The App does <strong>not</strong> collect or use any of the following:</p>
+      <ul>
+        <li>Audio recordings or any raw waveform data</li>
+        <li>GPS or precise location</li>
+        <li>Motion / gyroscope / accelerometer sensor data</li>
+        <li>Contacts, photos, calendar, or other on-device user data</li>
+        <li>Email address, phone number, or account credentials</li>
+      </ul>
+    </div>
+    <div data-lang="ja">
+      <h2>7. 本アプリが収集しない情報</h2>
+      <p>本アプリは以下を<strong>一切収集・使用しません</strong>。</p>
+      <ul>
+        <li>音声の録音データ・波形データ</li>
+        <li>GPS や詳細な位置情報</li>
+        <li>モーション／ジャイロ／加速度などのセンサー情報</li>
+        <li>連絡先・写真・カレンダーなどのデバイス上の利用者データ</li>
+        <li>メールアドレス・電話番号・アカウント認証情報</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Support Form -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>8. Support Contact Form</h2>
+      <p>This support website uses <strong>Formspree</strong> to deliver contact form submissions. When you submit the form, your name, email address, and message are sent through Formspree to us. See <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formspree's Privacy Policy</a>.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>8. サポートフォームについて</h2>
+      <p>本サポートサイトはお問い合わせフォームの処理に <strong>Formspree</strong> を利用しています。フォームを送信すると、お名前・メールアドレス・メッセージが Formspree を通じて当社に届きます。詳細は <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formspreeのプライバシーポリシー</a>をご参照ください。</p>
+    </div>
+  </div>
+
+  <!-- 9. App Stores -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>9. App Stores</h2>
+      <p>The App is distributed through Apple's App Store and Google Play. These platforms may collect information in accordance with <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. We do not control or have access to data they collect on their own.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>9. アプリストア</h2>
+      <p>本アプリは Apple App Store および Google Play を通じて配信されます。これらのプラットフォームは <a href="https://www.apple.com/legal/privacy/ja/" target="_blank" rel="noopener">Appleのプライバシーポリシー</a>および <a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Googleのプライバシーポリシー</a>に従い、独自に情報を収集する場合があります。当社はそれらの情報を管理・参照することはできません。</p>
+    </div>
+  </div>
+
+  <!-- 10. Children -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>10. Children's Privacy</h2>
+      <p>The App is rated for general audiences. We do not knowingly collect personal information from children under 13. The leaderboard nickname is restricted to 6 alphanumeric characters and should not contain personal data.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>10. 子どものプライバシー</h2>
+      <p>本アプリは全年齢を対象としています。13歳未満のお子様から個人情報を意図的に収集することはありません。ランキング登録のニックネームは英数6文字に制限されており、個人情報を含めないでください。</p>
+    </div>
+  </div>
+
+  <!-- 11. Changes -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>11. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Material changes will be reflected on this page with an updated "Last updated" date.</p>
+    </div>
+    <div data-lang="ja">
+      <h2>11. ポリシーの変更</h2>
+      <p>本プライバシーポリシーは必要に応じて更新することがあります。重要な変更があった場合は、このページの「最終更新日」を改訂したうえで掲載します。</p>
+    </div>
+  </div>
+
+  <!-- 12. Contact -->
+  <div class="policy-section">
+    <div data-lang="en">
+      <h2>12. Contact</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us:</p>
+      <div class="contact-box">
+        <p><strong>OFFICEES LLC</strong><br>
+        <a href="index.html#contact">Support contact form</a></p>
+      </div>
+    </div>
+    <div data-lang="ja">
+      <h2>12. お問い合わせ</h2>
+      <p>本プライバシーポリシーに関するご質問は、以下よりお問い合わせください。</p>
+      <div class="contact-box">
+        <p><strong>OFFICEES LLC</strong><br>
+        <a href="index.html#contact">サポートお問い合わせフォーム</a></p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 OFFICEES LLC &nbsp;·&nbsp;
+    <a href="index.html"><span data-lang="en">Support Site</span><span data-lang="ja">サポートサイト</span></a>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+    document.getElementById('nav-back').textContent = lang === 'ja' ? '← サポートに戻る' : '← Back to Support';
+    document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    localStorage.setItem('loud-lang', lang);
+  }
+  const saved = localStorage.getItem('loud-lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>

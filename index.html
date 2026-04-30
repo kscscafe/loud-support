@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOUD — Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #FF5252;
+    --red-light: #FF8A80;
+    --red-dark: #B71C1C;
+    --bg: #0A0A0A;
+    --bg2: #141414;
+    --bg3: #1A0A0A;
+    --text: #F5F5F5;
+    --text-muted: #888888;
+    --border: rgba(255, 82, 82, 0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Anton', 'Noto Sans JP', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.25em;
+    color: var(--red);
+    text-decoration: none;
+    text-shadow: 0 0 12px rgba(255,82,82,0.35);
+  }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red-light); }
+  .lang-toggle { display: flex; border: 1px solid var(--border); overflow: hidden; }
+  .lang-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.3rem 0.75rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .lang-toggle button.active { background: var(--red); color: #0A0A0A; }
+  .lang-toggle button:hover:not(.active) { color: var(--red-light); }
+
+  [data-lang] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-ja [data-lang="ja"] { display: block; }
+  span[data-lang] { display: none; }
+  body.lang-en span[data-lang="en"] { display: inline; }
+  body.lang-ja span[data-lang="ja"] { display: inline; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, rgba(255,82,82,0.10), transparent 60%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,82,82,0.08);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px; height: 450px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,82,82,0.05);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite 1s;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.06); opacity: 0.6; }
+  }
+  .hero-title {
+    font-family: 'Anton', 'Noto Sans JP', sans-serif;
+    font-size: 7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 32px rgba(255,82,82,0.5);
+    animation: fadeIn 1.2s ease both;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+    color: var(--text);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    animation: fadeIn 1.2s ease 0.2s both;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    max-width: 520px;
+    animation: fadeIn 1.2s ease 0.4s both;
+  }
+  .hero-badge { margin-top: 3rem; animation: fadeIn 1.2s ease 0.6s both; }
+  .hero-badge a {
+    display: inline-block;
+    background: var(--red);
+    color: #0A0A0A;
+    text-decoration: none;
+    padding: 0.9rem 2.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 0 24px rgba(255,82,82,0.4);
+  }
+  .hero-badge a:hover {
+    background: var(--red-light);
+    box-shadow: 0 0 36px rgba(255,138,128,0.6);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section { max-width: 760px; margin: 0 auto; padding: 6rem 2rem; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: 'Anton', 'Noto Sans JP', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  p { color: var(--text-muted); margin-bottom: 1.2rem; }
+  p strong { color: var(--text); font-weight: 700; }
+
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .feature {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+  .feature:hover {
+    border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(255,82,82,0.15);
+  }
+  .feature-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .feature h3 {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .feature p { font-size: 0.9rem; margin: 0; }
+
+  .steps { margin-top: 2rem; }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,82,82,0.1);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-number {
+    flex-shrink: 0;
+    width: 2.8rem; height: 2.8rem;
+    border: 1px solid var(--red);
+    color: var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .step-content h3 {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .step-content p { font-size: 0.92rem; margin: 0; }
+
+  form { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  input, textarea, select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.85rem 1rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--red); }
+  textarea { min-height: 160px; resize: vertical; }
+  button[type="submit"] {
+    background: transparent;
+    border: 1px solid var(--red);
+    color: var(--red-light);
+    padding: 1rem 2.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  button[type="submit"]:hover {
+    background: var(--red);
+    color: #0A0A0A;
+    box-shadow: 0 0 24px rgba(255,82,82,0.4);
+  }
+  .form-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+  .success-msg {
+    display: none;
+    background: var(--bg3);
+    border: 1px solid var(--red);
+    color: var(--red-light);
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+  footer a { color: var(--red); text-decoration: none; }
+  footer a:hover { color: var(--red-light); }
+  .divider { border: none; border-top: 1px solid var(--border); max-width: 760px; margin: 0 auto; }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.8rem; }
+    .nav-links { display: none; }
+    .hero-title { font-size: 4.5rem; }
+    .hero-tagline { font-size: 0.8rem; letter-spacing: 0.3em; }
+    .features { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    h2 { font-size: 2rem; }
+    button[type="submit"] { align-self: stretch; text-align: center; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a class="nav-brand" href="#">LOUD</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about" id="nav-about">About</a>
+      <a href="#howto" id="nav-howto">How to Use</a>
+      <a href="#contact" id="nav-contact">Contact</a>
+      <a href="privacy.html" id="nav-privacy">Privacy</a>
+    </div>
+    <div class="lang-toggle">
+      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnJa" onclick="setLang('ja')">日本語</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-title">LOUD</div>
+  <div class="hero-tagline">
+    <span data-lang="en">Scream to the world</span>
+    <span data-lang="ja">世界に向かって叫べ</span>
+  </div>
+  <div class="hero-subtitle">
+    <span data-lang="en">Measure the loudness of your scream and submit your peak decibel score to the global ranking.</span>
+    <span data-lang="ja">叫び声の音量を測定し、ピークdBスコアを世界ランキングに登録するアプリ。</span>
+  </div>
+  <div class="hero-badge">
+    <a href="#">
+      <span data-lang="en">Download on the App Store</span>
+      <span data-lang="ja">App Store でダウンロード</span>
+    </a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="section-label">About</div>
+  <div data-lang="en">
+    <h2>What is LOUD?</h2>
+    <p><strong>LOUD</strong> is a simple, intense game that turns your scream into a number.</p>
+    <p>Tap <strong>SCREAM</strong>, count down 3-2-1, and let it out. The app captures your peak decibel level over a 3-second window, then ranks you against players around the world — and against your own country.</p>
+    <p>Your country is detected automatically from your IP address (no GPS, no account required), and your three-letter, arcade-style nickname puts you on the leaderboard like a classic high-score table.</p>
+  </div>
+  <div data-lang="ja">
+    <h2>LOUD とは</h2>
+    <p><strong>LOUD</strong> は、叫び声を数値に変えるシンプルで激しいゲームです。</p>
+    <p><strong>SCREAM</strong> ボタンを押して 3-2-1 のカウントダウンの後、思いっきり叫んでください。アプリは3秒間のピーク音量（dB）を記録し、世界中のプレイヤーとあなた自身の国別ランキングに登録します。</p>
+    <p>国は IP アドレスから自動判定（GPS不要・アカウント登録不要）。ゲームセンター風の6文字ニックネームでハイスコアテーブルに名前を残しましょう。</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">dB</div>
+      <h3><span data-lang="en">Peak measurement</span><span data-lang="ja">ピーク音量計測</span></h3>
+      <p><span data-lang="en">3-second peak detection using your device's microphone — no audio recording is ever stored.</span><span data-lang="ja">3秒間のピーク検出。マイクの音量レベルのみを使い、音声の録音や保存は行いません。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">#1</div>
+      <h3><span data-lang="en">World ranking</span><span data-lang="ja">世界ランキング</span></h3>
+      <p><span data-lang="en">Compare your scream against the world. Tabs split global and country-specific leaderboards.</span><span data-lang="ja">世界中のプレイヤーと比べてあなたの順位は？ 世界・国別タブで切替できます。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">A1B</div>
+      <h3><span data-lang="en">Arcade nickname</span><span data-lang="ja">アーケード風ニックネーム</span></h3>
+      <p><span data-lang="en">Spin the iOS-style picker to set your 6-character A-Z / 0-9 nickname.</span><span data-lang="ja">iOS風ドラムロールで A-Z / 0-9 の6文字ニックネームを入力。</span></p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">IP</div>
+      <h3><span data-lang="en">Auto country detect</span><span data-lang="ja">国自動判定</span></h3>
+      <p><span data-lang="en">Your country flag is determined from your IP address — no location permission required.</span><span data-lang="ja">IPアドレスから国旗を自動判定。位置情報の許可は不要です。</span></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="howto">
+  <div class="section-label">How to Use</div>
+  <div data-lang="en">
+    <h2>Getting Started</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">01</div><div class="step-content"><h3>Set your nickname</h3><p>Spin each digit of the drum-roll picker on the home screen to set your 6-character A-Z / 0-9 nickname.</p></div></div>
+      <div class="step"><div class="step-number">02</div><div class="step-content"><h3>Tap SCREAM</h3><p>Press the big red SCREAM button. On first launch you'll be asked to allow microphone access.</p></div></div>
+      <div class="step"><div class="step-number">03</div><div class="step-content"><h3>3 — 2 — 1</h3><p>A 3-second countdown with haptic feedback gets you ready. When you see <strong>NOW SCREAM!!</strong>, let it out.</p></div></div>
+      <div class="step"><div class="step-number">04</div><div class="step-content"><h3>See your score</h3><p>After 3 seconds of measurement, your peak decibel level is shown along with your world and country ranks.</p></div></div>
+      <div class="step"><div class="step-number">05</div><div class="step-content"><h3>Browse the leaderboard</h3><p>Tap <strong>VIEW RANKING</strong> to see the top scores worldwide and from your country, with flag and nickname for each entry.</p></div></div>
+    </div>
+  </div>
+  <div data-lang="ja">
+    <h2>使い方</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">01</div><div class="step-content"><h3>ニックネームを入力</h3><p>ホーム画面のドラムロールを各桁ごとに回して、A-Z / 0-9 の6文字ニックネームを設定します。</p></div></div>
+      <div class="step"><div class="step-number">02</div><div class="step-content"><h3>SCREAMボタンをタップ</h3><p>大きな赤いSCREAMボタンを押すと、初回起動時にマイクの許可ダイアログが表示されます。</p></div></div>
+      <div class="step"><div class="step-number">03</div><div class="step-content"><h3>3 — 2 — 1</h3><p>振動付きの3秒カウントダウンで準備完了。<strong>NOW SCREAM!!</strong> と表示されたら全力で叫びましょう。</p></div></div>
+      <div class="step"><div class="step-number">04</div><div class="step-content"><h3>結果を確認</h3><p>3秒間の計測後、ピーク音量(dB)と、世界順位・国別順位が表示されます。</p></div></div>
+      <div class="step"><div class="step-number">05</div><div class="step-content"><h3>ランキングを見る</h3><p><strong>VIEW RANKING</strong> をタップすると、世界・自国それぞれのトップスコアが、国旗とニックネーム付きで表示されます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div data-lang="en"><h2>Support & Feedback</h2><p>For questions, bug reports, or feedback, please use the form below.</p></div>
+  <div data-lang="ja"><h2>お問い合わせ</h2><p>ご質問・不具合のご報告・ご意見はこちらのフォームよりお送りください。</p></div>
+
+  <form action="https://formspree.io/f/mykoygpj" method="POST" id="contactForm">
+    <div class="form-group">
+      <label><span data-lang="en">Name</span><span data-lang="ja">お名前</span></label>
+      <input type="text" name="name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label><span data-lang="en">Subject</span><span data-lang="ja">件名</span></label>
+      <select name="subject" id="subjectSelect">
+        <option data-en="Bug report" data-ja="不具合の報告">Bug report</option>
+        <option data-en="Feature request" data-ja="機能のご要望">Feature request</option>
+        <option data-en="General question" data-ja="一般的なご質問">General question</option>
+        <option data-en="Other" data-ja="その他">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label><span data-lang="en">Message</span><span data-lang="ja">メッセージ</span></label>
+      <textarea name="message" required></textarea>
+    </div>
+    <button type="submit">
+      <span data-lang="en">Send Message</span><span data-lang="ja">送信する</span>
+    </button>
+    <p class="form-note">
+      <span data-lang="en">Your information will only be used to respond to your inquiry.</span>
+      <span data-lang="ja">ご入力いただいた情報はお問い合わせへの返答のみに使用します。</span>
+    </p>
+  </form>
+  <div class="success-msg" id="successMsg">
+    <span data-lang="en">Thank you. Your message has been received.</span>
+    <span data-lang="ja">送信が完了しました。内容を確認の上、折り返しご連絡いたします。</span>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 OFFICEES LLC &nbsp;·&nbsp;
+    <a href="privacy.html"><span data-lang="en">Privacy Policy</span><span data-lang="ja">プライバシーポリシー</span></a>
+  </p>
+</footer>
+
+<script>
+  const navLabels = {
+    en: { about:'About', howto:'How to Use', contact:'Contact', privacy:'Privacy' },
+    ja: { about:'アプリについて', howto:'使い方', contact:'お問い合わせ', privacy:'プライバシー' }
+  };
+
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+    document.getElementById('nav-about').textContent = navLabels[lang].about;
+    document.getElementById('nav-howto').textContent = navLabels[lang].howto;
+    document.getElementById('nav-contact').textContent = navLabels[lang].contact;
+    document.getElementById('nav-privacy').textContent = navLabels[lang].privacy;
+    document.querySelectorAll('#subjectSelect option').forEach(o => {
+      o.textContent = o.getAttribute('data-' + lang);
+      o.value = o.getAttribute('data-' + lang);
+    });
+    document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    localStorage.setItem('loud-lang', lang);
+  }
+
+  const saved = localStorage.getItem('loud-lang');
+  if (saved) setLang(saved);
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      }
+    } catch(err) { alert('An error occurred. Please try again.'); }
+  });
+</script>
+</body>
+</html>
